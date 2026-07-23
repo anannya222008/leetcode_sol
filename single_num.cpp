@@ -1,25 +1,42 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-    
-int singleNum(vector<int>& nums){
+
+vector<int> singleNum(vector<int>& nums) {
+    vector<int> result;
     int size = nums.size();
-    for(int i=0;i<size;i++){
+
+    for (int i = 0; i < size; i++) {
         bool isUnique = true;
-        for(int j =0;j<size;j++){
-            if(i!=j && nums[i] == nums[j]){
+
+        for (int j = 0; j < size; j++) {
+            if (i != j && nums[i] == nums[j]) {
                 isUnique = false;
                 break;
             }
         }
-        if(isUnique){
-            return nums[i];
+
+        if (isUnique) {
+            result.push_back(nums[i]);
         }
     }
-    return -1; // or some other indicator of an error
+
+    return result;
 }
-int main(){
-    vector <int> nums = {4, 1, 2, 1, 2};
-    cout<< "The single number is: " << singleNum(nums) << endl;
+
+int main() {
+    vector<int> nums = {4, 1, 2, 6, 1, 2};
+    vector<int> uniques = singleNum(nums);
+
+    if (uniques.empty()) {
+        cout << "No unique numbers found." << endl;
+    } else {
+        cout << "Unique numbers are: ";
+        for (int num : uniques) {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+
     return 0;
 }
