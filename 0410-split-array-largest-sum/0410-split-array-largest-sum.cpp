@@ -24,10 +24,12 @@ public:
         int n = nums.size();
         if(k>n) return -1;
         int sum = 0;
-        for(int i:nums){
-            sum +=i;
+        int maxVal = 0;
+        for(int i=0;i<n;i++){
+            sum +=nums[i];
+            maxVal = max(maxVal,nums[i]);
         }
-        int st = 0,end = sum;
+        int st = maxVal,end = sum;
         int ans = 0;
 
         while(st<=end){
