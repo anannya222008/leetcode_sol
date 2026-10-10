@@ -19,12 +19,7 @@ public:
                 break;
             }
         }
-        int st = pivot+1,end = n-1;
-        while(st <= end){
-            swap(nums[st],nums[end]);
-            st++;
-            end--;
-        }
+        reverse(nums.begin()+pivot+1,nums.end());
         
     }
 };
